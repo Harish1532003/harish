@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #ffcc00; /* Changed title color */
+        }
+        .task {
+            border: 1px solid #ccc;
+            padding: 10px; /* Reduced padding for smaller box */
+            margin: 15px 0; /* Adjusted margin for spacing */
+            background-color: #222;
+            border-radius: 5px;
+            max-width: 400px; /* Reduced box width */
+        }
+        input, select, button {
+            display: block;
+            width: 80%; /* Reduced input box length */
+            margin: 10px auto; /* Centered input fields */
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .description {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>Project Management</h1>
+
+<input type="text" id="taskInput" placeholder="Task description">
+<input type="text" id="teamName" placeholder="Team Name">
+<input type="email" id="email" placeholder="Email ID">
+<input type="date" id="dueDate">
+<select id="priority">
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+</select>
+<button onclick="addTask()">Add Task</button>
+<div id="taskList"></div>
+
+<script>
+    function addTask() {
+        let taskText = document.getElementById('taskInput').value;
+        let teamName = document.getElementById('teamName').value;
+        let email = document.getElementById('email').value;
+        let dueDate = document.getElementById('dueDate').value;
+        let priority = document.getElementById('priority').value;
+
+        if (!taskText.trim() || !teamName.trim() || !email.trim()) return;
+
+        let taskDiv = document.createElement('div');
+        taskDiv.className = 'task';
+        taskDiv.innerHTML = `<p><strong>${taskText}</strong></p>
+                             <p>Team: ${teamName}</p>
+                             <p>Email: ${email}</p>
+                             <p>Priority: ${priority}</p>
+                             <p>Due: ${dueDate || 'No deadline'}</p>
+                             <p>Status: In Progress</p>
+                             <button onclick="updateStatus(this, 'Completed')">Mark as Completed</button>
+                             <button onclick="updateStatus(this, 'In Progress')">In Progress</button>
+                             <button onclick="deleteTask(this)">Delete Task</button>`;
+
+        document.getElementById('taskList').appendChild(taskDiv);
+        document.getElementById('taskInput').value = '';
+        document.getElementById('teamName').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('dueDate').value = '';
+    }
+
+    function updateStatus(button, status) {
+        button.parentElement.querySelector('p:nth-child(6)').innerText = 'Status: ' + status;
+    }
+S
+    function deleteTask(button) {
+        button.parentElement.remove();
+    }
+</script>
+</body>
+</html>
