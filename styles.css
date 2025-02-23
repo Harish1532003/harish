@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: #ffcc00; /* Changed title color */
+}
+
+.task {
+    border: 1px solid #ccc;
+    padding: 10px; /* Reduced padding for smaller box */
+    margin: 15px 0; /* Adjusted margin for spacing */
+    background-color: #222;
+    border-radius: 5px;
+    max-width: 400px; /* Reduced box width */
+}
+
+input, select, button {
+    display: block;
+    width: 80%; /* Reduced input box length */
+    margin: 10px auto; /* Centered input fields */
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 20px;
+}
